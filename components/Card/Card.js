@@ -1,8 +1,8 @@
 import React from "react";
-import "./FriendCard.css";
+import "./Card.css";
 
 
-const FriendCard = props => {
+const Card = props => {
 
   this.componentToHex = function(c) {
     let color = parseInt(c,10);
@@ -32,4 +32,4 @@ return (
 );}
 
 
-export default FriendCard;
+export default Card;

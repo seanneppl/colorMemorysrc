@@ -1,10 +1,10 @@
 import React from "react";
-import FriendCard from "./components/FriendCard";
+import Card from "./components/Card";
 import Wrapper from "./components/Wrapper";
 import Counter from "./components/Counter";
 import Nav from "./components/Nav";
 
-const friends = [
+const cards = [
   { id: 1 }, { id: 2 }, { id: 3 },
   { id: 4 },{ id: 5 }, { id: 6 },
   { id: 7 },{ id: 8 }, { id: 9 },
@@ -17,25 +17,25 @@ const friends = [
 const randomColor = () => Math.floor(Math.random() * 257);
 // console.log(randomColor());
 
-friends.map((friend)=> friend.color = [randomColor(), randomColor(), randomColor()]);
+cards.map((card)=> card.color = [randomColor(), randomColor(), randomColor()]);
 
 class App extends React.Component { 
 
   state = {
-    friends : friends,
+    cards : cards,
     clicked : [],
     count: 0,
     max: 0
   }
 
-  randomizer = (friendId) => {
-    let friendsArray = this.state.friends;
+  randomizer = (cardId) => {
+    let cardsArray = this.state.cards;
 
     let clickedArray;
 
-    if (this.state.clicked.indexOf(friendId) === -1) {
+    if (this.state.clicked.indexOf(cardId) === -1) {
       // console.log("not in clicked")
-      clickedArray = [...this.state.clicked, friendId];
+      clickedArray = [...this.state.clicked, cardId];
 
         if (clickedArray.length > this.state.max) {
           this.setState({ max: this.state.clicked.length + 1 })
@@ -46,12 +46,12 @@ class App extends React.Component {
       clickedArray = [];
     }
 
-    for (let i = friendsArray.length - 1; i > 0; i--) {
+    for (let i = cardsArray.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [friendsArray[i], friendsArray[j]] = [friendsArray[j], friendsArray[i]];
+      [cardsArray[i], cardsArray[j]] = [cardsArray[j], cardsArray[i]];
     }
       
-    this.setState({ friends: friendsArray, clicked: clickedArray});
+    this.setState({ cards: cardsArray, clicked: clickedArray});
   }
 
   handleIncrement = () => {
@@ -79,14 +79,14 @@ class App extends React.Component {
 
     {
 
-      this.state.friends.map((friend) => 
+      this.state.cards.map((card) => 
 
         {
-          return <FriendCard
+          return <Card
           randomizer={this.randomizer}
-          id = {friend.id}
-          key = {friend.id}
-          color={friend.color}
+          id = {card.id}
+          key = {card.id}
+          color={card.color}
         />}
 
     )}
