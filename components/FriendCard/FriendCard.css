@@ -1,0 +1,21 @@
+.card {
+  background: #fff;
+  position: relative;
+  height: 25%;
+  width: 25%;
+  text-align: left;
+  cursor: pointer;
+}
+
+.card p{
+  color: white;
+  font-size: 12px;
+  text-shadow: 1px 1px 4px #000000;
+  margin: 0;
+}
+.card #colorBox{
+  display: block;
+  position: absolute; 
+  bottom: 10px;
+  left: 10px;
+}
